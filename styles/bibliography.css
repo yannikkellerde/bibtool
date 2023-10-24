@@ -1,0 +1,46 @@
+.searchbox{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+	margin:20px;
+}
+.search_elem{
+	display:flex;
+	position:relative;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	padding:5px;
+}
+.search_elem > input{
+	margin-top:5px;
+}
+.searchbox > input{
+	height:50%;
+}
+.wrap_stuff_row{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+}
+.wrap_stuff_col{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+}
+.buttons{
+	display:flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items:center;
+}
+.buttons > input{
+	margin:5px;
+}
+#status_msg{
+	color:red;
+	font-family:Helvetica;
+}

@@ -1,0 +1,4 @@
+*.csv
+*.vim
+**/__pycache__/**
+*.pdf

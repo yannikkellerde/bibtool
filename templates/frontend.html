@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles/table.css"></link>
+    <link rel="stylesheet" href="styles/button.css"></link>
+    <link rel="stylesheet" href="styles/bibliography.css"></link>
+	</head>
+<body>
+	<div class="wrap_stuff_row">
+		<form class="wrap_stuff_col" id="show_last_form">
+				<div class="search_elem">
+					<input type="submit" id="show_last" class="button6" href="#" value="Show newest"></input>
+					<input type="number" id="newest_n" value="10"></input>
+				</div>
+		</form>
+		<div class="wrap_stuff_col">
+			<form class="searchbox" id="addbox">
+				<div class="search_elem">
+					<span>Id</span>
+					<input type="text" id="add_id"></input>
+				</div>
+				<div class="search_elem">
+					<span>Title</span>
+					<input type="text" id="add_title"></input>
+				</div>
+				<div class="search_elem">
+					<span>Doi</span>
+					<input type="text" id="add_doi"></input>
+				</div>
+				<div class="search_elem">
+					<span>Tags</span>
+					<input type="text" id="add_tags"></input>
+				</div>
+				<input type="submit" id="search" class="button1" href="#" value="Add entry"></input>
+			</form>
+			<form class="searchbox" id="searchbox">
+				<div class="search_elem">
+					<span>Title</span>
+					<input type="text" id="title"></input>
+				</div>
+				<div class="search_elem">
+					<span>Doi</span>
+					<input type="text" id="doi"></input>
+				</div>
+				<div class="search_elem">
+					<span>Tags</span>
+					<input type="text" id="tags"></input>
+				</div>
+				<div class="search_elem">
+					<span>Date</span>
+					<input type="text" id="date"></input>
+				</div>
+				<input type="submit" id="search" class="button1" href="#" value="Search"></input>
+			</form>
+		</div>
+		<div class="wrap_stuff_col">
+			<div class="buttons" id="buttonwrapper">
+				<input type="button" id="delete" class="button6 disabled" href="#" value="Delete"></input>
+				<input type="button" id="edit" class="button6 disabled" href="#" value="Edit"></input>
+				<input type="button" id="open_PDF" class="button6 disabled" href="#" value="Open PDF"></input>
+				<input type="button" id="cite" class="button6 disabled" href="#" value="cite"></input>
+			</div>
+			<div class="search_elem">
+				<span>Password</span>
+				<input type="password" id="password"></input>
+			</div>
+			<div id="status_msg"></div>
+		</div>
+	</div>
+	<div class="row-wrap">
+		<div class="table-wrapper">
+			<table class="fl-table">
+					<thead>
+					<tr>
+							<th>Idx</th>
+							<th>Title</th>
+							<th>Doi</th>
+							<th>Tags</th>
+							<th>Date</th>
+					</tr>
+					</thead>
+					<tbody id="table_body">
+						<tr onmousedown="select_entry(1)" id="tr_1">
+							<td>1</td>
+							<td>art is great</td>
+							<td>124314</td>
+							<td>art</td>
+							<td>Today</td>
+						</tr>
+						<tr onmousedown="select_entry(2)" id="tr_2">
+							<td>2</td>
+							<td>art is great</td>
+							<td>124314</td>
+							<td>art</td>
+							<td>Today</td>
+						</tr>
+						<tr onmousedown="select_entry(3)" id="tr_3">
+							<td>3</td>
+							<td>art is great</td>
+							<td>124314</td>
+							<td>art</td>
+							<td>Today</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+<script src="js/frontend.js" type="module"></script>
+</body>
+
+</html>
