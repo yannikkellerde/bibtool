@@ -189,6 +189,7 @@ document.getElementById("password").addEventListener("keydown",show_elems);
 document.getElementById("edit").addEventListener("click",fillin_edit_fields);
 document.getElementById("cite").addEventListener("click",request_citation);
 document.getElementById("open_PDF").addEventListener("click",request_pdf);
+document.getElementById("upload_PDF").addEventListener("click",fileupload);
 
 document.addEventListener("keydown",function(e){
 	if (e.key=="c"){
