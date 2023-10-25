@@ -8,14 +8,16 @@ import time
 import pandas as pd
 import numpy as np
 
-class Biliograph_handler():
+class Bibliography_handler():
     def __init__(self) -> None:
-        self.pdf_path = "pdfs"
-        self.bib_path = "bib.csv"
+        self.base_path = os.path.abspath(os.path.dirname(__file__))
+        self.pdf_path = os.path.join(self.base_path,"pdfs")
+        self.pdf_user_path = "/bibliography/pdfs"
+        self.bib_path = os.path.join(self.base_path,"bib.csv")
         self.columns=["title","doi","tags","date"]
         self.additonal_columns=["citation","pdf_name"]
         self.bib_df = pd.DataFrame(columns=self.columns+self.additonal_columns)
-        self.hashpw = "89369daf658aeb0f54bec4c36d1e40ed6647066a3d2f0d1c465293e52751e11e"
+        self.hashpw = "2a02cda44868f9bd1bc701b9c071156ff782681a55da235815709e00033069b0"
         self.read_bib_file()
 
     def read_bib_file(self):
@@ -35,7 +37,13 @@ class Biliograph_handler():
         return self.bib_df[self.columns].head(amount).to_dict(orient="index")
 
     def change_bib_entry(self,index,title,tags,doi):
-        self.bib_df.loc[index] = {"title":title,"tags":tags,"doi":doi,"date":pd.Timestamp.now()}
+        if index in self.bib_df.index:
+            self.bib_df.at[index,"title"] = title
+            self.bib_df.at[index,"doi"] = doi
+            self.bib_df.at[index,"tags"] = tags
+            self.bib_df.at[index,"date"] = pd.Timestamp.now()
+        else:
+            self.bib_df.loc[index] = {"title":title,"tags":tags,"doi":doi,"date":pd.Timestamp.now()}
         self.bib_df.to_csv(self.bib_path)
 
     def delete_entry(self,index):
@@ -138,7 +146,7 @@ class Biliograph_handler():
                 pdf = self.bib_df.loc[data["request_pdf"]]["pdf_name"]
                 if type(pdf)==str:
                     return_data["success"] = True
-                    return_data["pdf_path"] = os.path.join(self.pdf_path,pdf)
+                    return_data["pdf_path"] = os.path.join(self.pdf_user_path,pdf)
                 else:
                     return_data["error"] = "No pdf available"
             else:
@@ -146,3 +154,4 @@ class Biliograph_handler():
             
 
         return jsonify(return_data)
+bib_handler = Bibliography_handler()

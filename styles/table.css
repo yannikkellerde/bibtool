@@ -13,7 +13,7 @@
     border-collapse: collapse;
     width: 100%;
     max-width: 100%;
-    white-space: nowrap;
+    white-space: normal;
     background-color: white;
 }
 

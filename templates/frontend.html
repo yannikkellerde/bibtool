@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="styles/table.css"></link>
-    <link rel="stylesheet" href="styles/button.css"></link>
-    <link rel="stylesheet" href="styles/bibliography.css"></link>
+		<link rel="stylesheet" href="bibliography/styles/table.css"></link>
+    <link rel="stylesheet" href="bibliography/styles/button.css"></link>
+    <link rel="stylesheet" href="bibliography/styles/bibliography.css"></link>
 	</head>
 <body>
-	<div class="wrap_stuff_row">
+	<div class="wrap_stuff_row" id="topwrap">
 		<form class="wrap_stuff_col" id="show_last_form">
 				<div class="search_elem">
 					<input type="submit" id="show_last" class="button6" href="#" value="Show newest"></input>
@@ -81,32 +81,11 @@
 					</tr>
 					</thead>
 					<tbody id="table_body">
-						<tr onmousedown="select_entry(1)" id="tr_1">
-							<td>1</td>
-							<td>art is great</td>
-							<td>124314</td>
-							<td>art</td>
-							<td>Today</td>
-						</tr>
-						<tr onmousedown="select_entry(2)" id="tr_2">
-							<td>2</td>
-							<td>art is great</td>
-							<td>124314</td>
-							<td>art</td>
-							<td>Today</td>
-						</tr>
-						<tr onmousedown="select_entry(3)" id="tr_3">
-							<td>3</td>
-							<td>art is great</td>
-							<td>124314</td>
-							<td>art</td>
-							<td>Today</td>
-						</tr>
 					</tbody>
 			</table>
 		</div>
 	</div>
-<script src="js/frontend.js" type="module"></script>
+<script src="bibliography/js/frontend.js" type="module"></script>
 </body>
 
 </html>

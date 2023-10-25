@@ -19,6 +19,9 @@
 .searchbox > input{
 	height:50%;
 }
+#topwrap{
+	flex-wrap:wrap;
+}
 .wrap_stuff_row{
 	display:flex;
 	flex-direction:row;

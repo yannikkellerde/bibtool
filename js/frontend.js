@@ -33,6 +33,12 @@ function request_pdf(){
 		xml_http_post(window.location.href,{"request_pdf":cur_selection,"password":document.getElementById("password").value},handle_return_data)
 	}
 }
+function clear_enter_box(){
+	document.getElementById("add_id").value = ""
+	document.getElementById("add_title").value = ""
+	document.getElementById("add_doi").value = ""
+	document.getElementById("add_tags").value = ""
+}
 function display_status_msg(msg){
 	stat_msg_box.innerText=msg;
 	clearTimeout(wait_for);
@@ -81,7 +87,7 @@ function show_rows(row_data){
 		a.innerText = info.doi;
 		a.href = "https://doi.org/"+info.doi;
 		td = tr.appendChild(document.createElement("td"));
-		td.innerText = info.tags;
+		td.innerText = info.tags.replaceAll(":"," : ");
 		td = tr.appendChild(document.createElement("td"));
 		td.innerText = info.date;
 	});
@@ -98,6 +104,7 @@ function handle_return_data(data){
 	if ("success" in data && data.success){
 		display_status_msg("success");
 		setCookie("password",document.getElementById("password").value,100);
+		clear_enter_box();
 	}
 	if ("citation" in data){
 		navigator.clipboard.writeText(data["citation"]).then(() => {
@@ -121,6 +128,7 @@ function select_entry(idx){
 	document.getElementById("edit").className="button6";
 	document.getElementById("open_PDF").className="button6";
 	document.getElementById("cite").className="button6";
+	document.getElementById("upload_PDF").className="button6";
 }
 
 function deselect_entry(){
@@ -132,6 +140,7 @@ function deselect_entry(){
 	document.getElementById("edit").className="button6 disabled";
 	document.getElementById("open_PDF").className="button6 disabled";
 	document.getElementById("cite").className="button6 disabled";
+	document.getElementById("upload_PDF").className="button6 disabled";
 }
 
 function fileupload(){
@@ -184,6 +193,10 @@ document.getElementById("addbox").addEventListener("submit",
 	}
 )
 
+document.getElementById("addbox").addEventListener("mousedown",deselect_entry);
+document.getElementById("addbox").addEventListener("select",deselect_entry);
+document.getElementById("searchbox").addEventListener("mousedown",deselect_entry);
+document.getElementById("searchbox").addEventListener("select",deselect_entry);
 document.getElementById("delete").addEventListener("click",delete_selection);
 document.getElementById("password").addEventListener("keydown",show_elems);
 document.getElementById("edit").addEventListener("click",fillin_edit_fields);
@@ -192,8 +205,19 @@ document.getElementById("open_PDF").addEventListener("click",request_pdf);
 document.getElementById("upload_PDF").addEventListener("click",fileupload);
 
 document.addEventListener("keydown",function(e){
+	if (e.target.closest("input")){
+		return
+	}
 	if (e.key=="c"){
 		request_citation();
+	}
+	else if (e.key=="/"){
+		document.getElementById("tags").focus();
+		e.preventDefault()
+	}
+	else if (e.key=="t"){
+		document.getElementById("title").focus();
+		e.preventDefault()
 	}
 	else if (e.key=="d"){
 		delete_selection();
